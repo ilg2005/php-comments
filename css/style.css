@@ -110,18 +110,12 @@ main {
 }
 
 .comments-list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     margin: 0;
     padding: 0;
 
     list-style: none;
-
-    -ms-flex-wrap: wrap;
 }
-
 
 .customer-name {
     padding-right: 40px;
@@ -197,13 +191,6 @@ main {
 .comments-form textarea:focus {
     border-color: #000000;
     outline: none;
-    opacity: 1;
-}
-
-.comments-form input:invalid {
-    color: #e74246;
-
-    border-color: #e74246;
     opacity: 1;
 }
 
