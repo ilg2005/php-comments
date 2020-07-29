@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         sleep(DELAY);
         header("Refresh: 0");
     } else {
-        $errorMsg = 'Поля ввода должны быть заполнены!';
+        $errorMsg = 'Поля ввода не могут быть пустыми!';
     }
 }
 
