@@ -194,6 +194,13 @@ main {
     opacity: 1;
 }
 
+.error {
+    display: block;
+    font-weight: 200;
+    font-size: 14px;
+    color: #f60505;
+}
+
 .send-btn {
     display: block;
     min-height: 50px;

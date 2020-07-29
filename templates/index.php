@@ -13,7 +13,9 @@
     </section>
     <section class="comments-form">
         <h2>Оставить комментарий</h2>
-
+        <?php if ($errorMsg) : ?>
+        <div class="error"><?= $errorMsg ?></div>
+        <?php endif; ?>
         <form action="/" method="post">
             <p>
                 <label for="name">Ваше имя</label>
