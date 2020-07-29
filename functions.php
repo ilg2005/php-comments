@@ -23,8 +23,6 @@ function includeTemplate($name, $data)
     extract($data, EXTR_OVERWRITE);
     require $name;
 
-    $result = ob_get_clean();
-
-    return $result;
+    return ob_get_clean();
 }
 
