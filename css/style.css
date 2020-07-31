@@ -111,10 +111,14 @@ main {
 
 .comments-list {
     display: block;
-    margin: 0;
+    margin-top: 20px;
     padding: 0;
 
     list-style: none;
+}
+
+.comments-list li {
+    margin-bottom: 20px;
 }
 
 .customer-name {
@@ -153,7 +157,13 @@ main {
     color: #000000;
 }
 
-.comments-form input[type="text"] {
+.comments-form label.required:after
+{
+    color: red;
+    content: " *";
+}
+
+.comments-form input {
     width: 460px;
     height: 45px;
     padding: 15px;
@@ -199,6 +209,13 @@ main {
     font-weight: 200;
     font-size: 14px;
     color: #f60505;
+}
+
+.success {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1ebd2c;
 }
 
 .send-btn {

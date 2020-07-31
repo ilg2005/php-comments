@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 29 2020 г., 09:58
+-- Время создания: Июл 31 2020 г., 12:41
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.1.12
 
@@ -19,51 +19,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `future`
+-- База данных: `chimmed`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `comments`
+-- Структура таблицы `orders`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
+  `tel` varchar(25) DEFAULT NULL,
+  `email` varchar(128) NOT NULL,
   `comment` text,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `comments`
+-- Дамп данных таблицы `orders`
 --
 
-INSERT INTO `comments` (`id`, `name`, `comment`, `date`) VALUES
-(1, '﻿Савва', 'Спасибо за Ваше тестовое задание. Оно, действительно, изумительное\r\n', '2014-07-02 15:05:16'),
-(2, 'Евдоким', 'Если включить мозги, то все элементарно Ватсон!\r\n', '2014-07-02 14:42:16'),
-(3, 'Артемий', 'Почему такое сложное задание??? Мне кажется, нужно быть первоклассным программистом, чтобы выполнить его :(', '2014-07-02 13:10:16');
+INSERT INTO `orders` (`id`, `name`, `tel`, `email`, `comment`, `date`) VALUES
+(1, '﻿Савва', '79991111111', 'savva@mail.ru', 'Хочу сделать крупный заказ\r\n', '2020-07-31 09:35:41'),
+(2, 'Евдоким', '89992222222', 'evdokim@gmail.com', 'Пожалуйста, перезвоните!\r\n', '2020-07-31 09:35:41'),
+(3, 'Артемий', '79993333333', 'artemy@mail.com', 'Скиньте, пожалуйста, прайс на электронную почту\r\n', '2020-07-31 09:35:41');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `comments`
+-- Индексы таблицы `orders`
 --
-ALTER TABLE `comments`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `future_name_index` (`name`),
-  ADD KEY `future_date_index` (`date`);
+  ADD KEY `chimmed_name_index` (`name`),
+  ADD KEY `chimmed_tel_index` (`tel`),
+  ADD KEY `chimmed_email_index` (`email`),
+  ADD KEY `chimmed_date_index` (`date`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `comments`
+-- AUTO_INCREMENT для таблицы `orders`
 --
-ALTER TABLE `comments`
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

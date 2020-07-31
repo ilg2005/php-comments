@@ -2,35 +2,16 @@
 require_once 'functions.php';
 require_once 'connect.php';
 
-const DELAY = 1;
-$name = '';
-$comment = '';
-$errorMsg = '';
+$pageTitle = 'Chimmed - Orders';
 
-$formerCommentsSQL = "SELECT * FROM comments ORDER BY date DESC";
+$formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
 
-$stm = $pdo->query($formerCommentsSQL);
+$stm = $pdo->query($formerOrdersSQL);
 $results = $stm->fetchAll(PDO::FETCH_ASSOC);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = checkUserInput($_POST['name']);
-    $comment = checkUserInput($_POST['comment-text']);
-
-    if ($name && $comment) {
-
-        insertData2DB($pdo, $name, $comment);
-        sleep(DELAY);
-        header("Refresh: 0");
-    } else {
-        $errorMsg = 'Поля ввода не могут быть пустыми!';
-    }
-}
 
 $mainContent = includeTemplate('index.php', [
     'results' => $results,
-    'errorMsg' => $errorMsg
 ]);
-
 
 $layout = includeTemplate('layout.php', [
     'pageTitle' => $pageTitle,

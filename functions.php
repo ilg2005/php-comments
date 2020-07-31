@@ -1,7 +1,5 @@
 <?php
 
-$pageTitle = 'Future - Comments';
-
 /**
  * Подключает файлы шаблонов
  *
@@ -32,14 +30,17 @@ function includeTemplate($name, $data)
  *
  * @param $connection -- соединение с базой данных
  * @param $userName -- имя пользователя
+ * @param $userTel -- телефон пользователя
+ * @param $userEmail -- email пользователя
  * @param $userComment -- комментарий пользователя
  */
-function insertData2DB($connection, $userName, $userComment) {
-    $insertSQL = 'INSERT INTO comments (name, comment) VALUES (?, ?)';
+function insertData2DB($connection, $userName, $userEmail, $userTel = '', $userComment = '')
+{
+    $insertSQL = 'INSERT INTO orders (name,  email, tel, comment) VALUES (?, ?, ?, ?)';
 
     try {
         $stm = $connection->prepare($insertSQL);
-        $stm->execute([$userName, $userComment]);
+        $stm->execute([$userName, $userEmail, $userTel, $userComment]);
     } catch (PDOException $err) {
         printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
         exit();
@@ -52,7 +53,27 @@ function insertData2DB($connection, $userName, $userComment) {
  * @param $value -- значение поля ввода
  * @return string -- очищенное значение поля ввода
  */
-function checkUserInput($value) {
+function cleanUserInput($value)
+{
     return trim(strip_tags($value));
 }
 
+/**
+ * Получает все значения поля из БД
+ *
+ * @param $connection -- соединение с базой данных
+ * @param $fieldName -- имя поля базы данных
+ * @return mixed -- значения поля из базы данных
+ */
+function getArrayFromDatabase($connection, $fieldName)
+{
+    $selectionSQL = "SELECT $fieldName from orders";
+
+    try {
+        $stm = $connection->query($selectionSQL);
+        return $stm->fetchAll(PDO::FETCH_COLUMN);
+    } catch (PDOException $err) {
+        printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
+        exit();
+    }
+}

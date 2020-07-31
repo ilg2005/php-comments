@@ -7,7 +7,7 @@ $content = file($path2Data);
 $linesNumber = count($content);
 
 foreach ($content as $key => $value) {
-    [$name, $comment] = explode("\t", $value);
-    insertData2DB($pdo, $name, $comment);
+    [$name, $email, $tel, $comment] = explode("\t", $value);
+    insertData2DB($pdo, $name, $email, $tel, $comment);
 }
 echo 'Загрузка завершена!';
