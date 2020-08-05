@@ -37,10 +37,13 @@ formElement.addEventListener("submit", (evt) => {
     if (name && email /*&& validateEmail()*/) {
         const request = new XMLHttpRequest();
         const url = 'action_ajax_form.php';
-        const params = 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&tel=' + encodeURIComponent(tel) + '&comment=' + encodeURIComponent(comment);
+        /*const params = 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&tel=' + encodeURIComponent(tel) + '&comment=' + encodeURIComponent(comment);*/
+
+        let params = new FormData(formElement);
+
 
         request.open('POST', url, true);
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        /*request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');*/
 
         request.addEventListener('readystatechange', () => {
 
