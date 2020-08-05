@@ -8,7 +8,7 @@ const DELAY = 1000;
 
 $('#tel').mask('9(999) 999-99-99');
 
-let validateEmail = () => {
+/*let validateEmail = () => {
     const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     if (!reg.test(emailElement.value)) {
         responseElement.classList.add('error');
@@ -16,9 +16,9 @@ let validateEmail = () => {
         return false;
     }
     return true;
-}
+}*/
 
-submitBtnElement.addEventListener("click", (evt) => {
+submitBtnElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
     let name = nameElement.value.trim();
     let email = emailElement.value.trim();
@@ -33,7 +33,7 @@ submitBtnElement.addEventListener("click", (evt) => {
         responseElement.innerText = 'Заполните обязательное поле "Почта" !';
     }
 
-    if (name && email && validateEmail()) {
+    if (name && email /*&& validateEmail()*/) {
         const request = new XMLHttpRequest();
         const url = 'action_ajax_form.php';
         const params = 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&tel=' + encodeURIComponent(tel) + '&comment=' + encodeURIComponent(comment);
