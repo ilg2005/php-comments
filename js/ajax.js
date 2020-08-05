@@ -1,8 +1,9 @@
-const submitBtnElement = document.querySelector('#btn');
-const nameElement = document.querySelector('#name');
-const emailElement = document.querySelector('#email');
-const telElement = document.querySelector('#tel');
-const commentElement = document.querySelector('#comment-text');
+const formElement = document.querySelector('#ajax_form');
+const submitBtnElement = formElement.querySelector('#btn');
+const nameElement = formElement.querySelector('#name');
+const emailElement = formElement.querySelector('#email');
+const telElement = formElement.querySelector('#tel');
+const commentElement = formElement.querySelector('#comment-text');
 const responseElement = document.querySelector('#response');
 const DELAY = 1000;
 
@@ -18,7 +19,7 @@ $('#tel').mask('9(999) 999-99-99');
     return true;
 }*/
 
-submitBtnElement.addEventListener("submit", (evt) => {
+formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
     let name = nameElement.value.trim();
     let email = emailElement.value.trim();
