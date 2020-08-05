@@ -4,10 +4,7 @@ require_once 'connect.php';
 
 $pageTitle = 'Chimmed - Orders';
 
-$formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
-
-$stm = $pdo->query($formerOrdersSQL);
-$results = $stm->fetchAll(PDO::FETCH_ASSOC);
+$results = getExistingData($pdo);
 
 $mainContent = includeTemplate('index.php', [
     'results' => $results,

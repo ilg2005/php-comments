@@ -77,3 +77,16 @@ function getArrayFromDatabase($connection, $fieldName)
         exit();
     }
 }
+
+/**
+ * Получает из базы существующие данные для вывода на страницу
+ *
+ * @param $connection -- соединение с базой данных
+ * @return mixed - записи БД
+ */
+function getExistingData($connection) {
+    $formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
+
+    $stm = $connection->query($formerOrdersSQL);
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
+}
