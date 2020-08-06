@@ -9,13 +9,13 @@ if (!isset($_POST['name'], $_POST['email'])) {
 $name = cleanUserInput($_POST['name']);
 $email = cleanUserInput($_POST['email']);
 
-if (in_array($email, getArrayFromDatabase($pdo, 'email'), true)) {
+if (countRecords($pdo, "SELECT email from orders WHERE email = '$email'")) {
     exit('email exists');
 }
 
 if (isset($_POST['tel'])) {
     $tel = cleanUserInput($_POST['tel']);
-    if ($tel && in_array($tel, getArrayFromDatabase($pdo, 'tel'), true)) {
+    if ($tel && countRecords($pdo, "SELECT tel from orders WHERE tel = '$tel'")) {
         exit('telephone exists');
     }
 }

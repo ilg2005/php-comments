@@ -59,23 +59,38 @@ function cleanUserInput($value)
 }
 
 /**
- * Получает все значения поля из БД
+ * Подсчитывает количество определенных записей в поле БД
  *
  * @param $connection -- соединение с базой данных
  * @param $fieldName -- имя поля базы данных
- * @return mixed -- значения поля из базы данных
+ * @param $fieldValue -- искомое значение поля базы данных
+ * @return mixed -- количество записей в базе данных
  */
-function getArrayFromDatabase($connection, $fieldName)
+/*function countRecords($connection, $fieldName, $fieldValue)
 {
-    $selectionSQL = "SELECT $fieldName from orders";
+    $selectionSQL = "SELECT COUNT(*) FROM orders WHERE '$fieldName'='$fieldValue'";
 
     try {
-        $stm = $connection->query($selectionSQL);
-        return $stm->fetchAll(PDO::FETCH_COLUMN);
+        $stm = $connection->prepare($selectionSQL);
+        $stm->execute();
+        return $stm->rowCount();
     } catch (PDOException $err) {
         printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
         exit();
     }
+}*/
+
+/**
+ * Подсчитывает число строк в базе данных
+ *
+ * @param $connection -- соединение с базой данных
+ * @param $sql -- запрос в БД
+ * @return mixed -- количество строк
+ */
+function countRecords($connection, $sql) {
+    $stm = $connection->prepare($sql);
+    $stm->execute();
+    return $stm->rowCount();
 }
 
 /**
