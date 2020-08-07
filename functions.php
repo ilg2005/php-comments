@@ -8,7 +8,6 @@
  *
  * @return false|string -- строка содержимого буфера вывода или false
  */
-
 function includeTemplate($name, $data)
 {
     $name = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $name;
@@ -23,28 +22,6 @@ function includeTemplate($name, $data)
     require $name;
 
     return ob_get_clean();
-}
-
-/**
- * Вставляет данные в базу данных
- *
- * @param $connection -- соединение с базой данных
- * @param $userName -- имя пользователя
- * @param $userTel -- телефон пользователя
- * @param $userEmail -- email пользователя
- * @param $userComment -- комментарий пользователя
- */
-function insertData2DB($connection, $userName, $userEmail, $userTel = '', $userComment = '')
-{
-    $insertSQL = 'INSERT INTO orders (name,  email, tel, comment) VALUES (?, ?, ?, ?)';
-
-    try {
-        $stm = $connection->prepare($insertSQL);
-        $stm->execute([$userName, $userEmail, $userTel, $userComment]);
-    } catch (PDOException $err) {
-        printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
-        exit();
-    }
 }
 
 /**
@@ -66,7 +43,7 @@ function cleanUserInput($value)
  * @param $params -- массив параметров переменных для запроса
  * @return mixed -- объект PDO statement
  */
-function execute($connection, $sql, $params) {
+function execute($connection, $sql, $params = []) {
     try {
     $stm = $connection->prepare($sql);
     $stm->execute($params);
@@ -77,43 +54,6 @@ function execute($connection, $sql, $params) {
     }
 }
 
-
-/**
- * Подсчитывает число искомых записей в поле БД
- *
- * @param $connection -- соединение с базой данных
- * @param $fieldName -- имя поля для поиска
- * @param $fieldValue -- искомая запись
- * @return mixed -- число вхождений искомой записи в поле
- */
-function countRecords($connection, $fieldName, $fieldValue)
-{
-    $selectionSQL = "SELECT COUNT(*) FROM orders WHERE $fieldName = :fieldValue";
-
-    try {
-        $stm = $connection->prepare($selectionSQL);
-        $stm->bindParam(':fieldValue', $fieldValue);
-        $stm->execute();
-        return $stm->fetchColumn();
-    } catch (PDOException $err) {
-        printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
-        exit();
-    }
-}
-
-/**
- * Подсчитывает число строк в базе данных
- *
- * @param $connection -- соединение с базой данных
- * @param $sql -- запрос в БД
- * @return mixed -- количество строк
- */
-/*function countRecords($connection, $sql) {
-    $stm = $connection->prepare($sql);
-    $stm->execute();
-    return $stm->rowCount();
-}*/
-
 /**
  * Получает из базы существующие данные для вывода на страницу
  *
@@ -122,7 +62,6 @@ function countRecords($connection, $fieldName, $fieldValue)
  */
 function getExistingData($connection) {
     $formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
-
-    $stm = $connection->query($formerOrdersSQL);
+    $stm = execute($connection, $formerOrdersSQL);
     return $stm->fetchAll(PDO::FETCH_ASSOC);
 }

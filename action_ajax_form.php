@@ -9,14 +9,14 @@ if (!isset($_POST['name'], $_POST['email'])) {
 $name = cleanUserInput($_POST['name']);
 $email = cleanUserInput($_POST['email']);
 
-if (countRecords($pdo, 'email', $email)) {
+if (execute($pdo, 'SELECT COUNT(*) from `orders` WHERE `email` = ?', [$email])->fetchColumn()) {
     exit('email exists');
 }
 
 if (isset($_POST['tel'])) {
     $tel = cleanUserInput($_POST['tel']);
 
-    if ($tel && countRecords($pdo, 'tel', $tel)) {
+    if ($tel && execute($pdo, 'SELECT COUNT(*) from `orders` WHERE `tel` = ?', [$tel])->fetchColumn()) {
         exit('telephone exists');
     }
 }
@@ -25,5 +25,5 @@ if (isset($_POST['comment'])) {
     $comment = cleanUserInput($_POST['comment']);
 }
 
-insertData2DB($pdo, $name, $email, $tel, $comment);
+execute($pdo, 'INSERT INTO orders (name,  email, tel, comment) VALUES (?, ?, ?, ?)', [$name, $email, $tel, $comment]);
 exit('ok');
