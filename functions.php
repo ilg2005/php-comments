@@ -59,26 +59,47 @@ function cleanUserInput($value)
 }
 
 /**
- * Подсчитывает количество определенных записей в поле БД
+ * Выполняет запрос в базу данных
  *
  * @param $connection -- соединение с базой данных
- * @param $fieldName -- имя поля базы данных
- * @param $fieldValue -- искомое значение поля базы данных
- * @return mixed -- количество записей в базе данных
+ * @param $sql  -- запрос в БД
+ * @param $params -- массив параметров переменных для запроса
+ * @return mixed -- объект PDO statement
  */
-/*function countRecords($connection, $fieldName, $fieldValue)
-{
-    $selectionSQL = "SELECT COUNT(*) FROM orders WHERE '$fieldName'='$fieldValue'";
-
+function execute($connection, $sql, $params) {
     try {
-        $stm = $connection->prepare($selectionSQL);
-        $stm->execute();
-        return $stm->rowCount();
+    $stm = $connection->prepare($sql);
+    $stm->execute($params);
+    return $stm;
     } catch (PDOException $err) {
         printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
         exit();
     }
-}*/
+}
+
+
+/**
+ * Подсчитывает число искомых записей в поле БД
+ *
+ * @param $connection -- соединение с базой данных
+ * @param $fieldName -- имя поля для поиска
+ * @param $fieldValue -- искомая запись
+ * @return mixed -- число вхождений искомой записи в поле
+ */
+function countRecords($connection, $fieldName, $fieldValue)
+{
+    $selectionSQL = "SELECT COUNT(*) FROM orders WHERE $fieldName = :fieldValue";
+
+    try {
+        $stm = $connection->prepare($selectionSQL);
+        $stm->bindParam(':fieldValue', $fieldValue);
+        $stm->execute();
+        return $stm->fetchColumn();
+    } catch (PDOException $err) {
+        printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
+        exit();
+    }
+}
 
 /**
  * Подсчитывает число строк в базе данных
@@ -87,11 +108,11 @@ function cleanUserInput($value)
  * @param $sql -- запрос в БД
  * @return mixed -- количество строк
  */
-function countRecords($connection, $sql) {
+/*function countRecords($connection, $sql) {
     $stm = $connection->prepare($sql);
     $stm->execute();
     return $stm->rowCount();
-}
+}*/
 
 /**
  * Получает из базы существующие данные для вывода на страницу
