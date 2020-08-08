@@ -6,8 +6,6 @@ if (isset($_POST['name'], $_POST['email'])) {
     $name = cleanUserInput($_POST['name']);
     $email = cleanUserInput($_POST['email']);
 } else {
-    echo $_POST;
-    die();
     echo json_encode(['success' => false, 'message' => 'Не заполнены обязательные поля !']);
     die();
 }
