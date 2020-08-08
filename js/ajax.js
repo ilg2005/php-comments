@@ -26,26 +26,22 @@ formElement.addEventListener("submit", (evt) => {
 
 
         request.open('POST', url, true);
+        request.responseType =	"json";
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         request.addEventListener('readystatechange', () => {
 
             if (request.readyState === 4 && request.status === 200) {
-                let serverResponse = request.responseText;
+                let serverResponse = request.response;
+                console.log(serverResponse);
 
-                switch (serverResponse) {
-                    case 'ok':
-                        responseElement.classList.add('success');
-                        responseElement.innerText = 'Заявка успешно отправлена!';
-                        setTimeout(() => window.location.reload(), DELAY);
-                        break;
-                    case 'email exists':
-                        responseElement.classList.add('error');
-                        responseElement.innerText = 'Пользователь с таким email уже существует !';
-                        break;
-                    case 'telephone exists':
-                        responseElement.classList.add('error');
-                        responseElement.innerText = 'Пользователь с таким телефоном уже существует !';
-                        break;
+                if (serverResponse.success === true) {
+                    responseElement.classList.add('success');
+                    responseElement.innerText = serverResponse.message;
+                    setTimeout(() => window.location.reload(), DELAY);
+                } else {
+                    responseElement.classList.add('error');
+                    responseElement.innerText = serverResponse.message;
                 }
             } else {
                 responseElement.classList.add('error');
@@ -53,5 +49,6 @@ formElement.addEventListener("submit", (evt) => {
             }
         });
         request.send(params);
+        console.log(params);
     }
 });
