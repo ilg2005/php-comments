@@ -8,7 +8,6 @@
  *
  * @return false|string -- строка содержимого буфера вывода или false
  */
-
 function includeTemplate($name, $data)
 {
     $name = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $name;
@@ -26,28 +25,6 @@ function includeTemplate($name, $data)
 }
 
 /**
- * Вставляет данные в базу данных
- *
- * @param $connection -- соединение с базой данных
- * @param $userName -- имя пользователя
- * @param $userTel -- телефон пользователя
- * @param $userEmail -- email пользователя
- * @param $userComment -- комментарий пользователя
- */
-function insertData2DB($connection, $userName, $userEmail, $userTel = '', $userComment = '')
-{
-    $insertSQL = 'INSERT INTO orders (name,  email, tel, comment) VALUES (?, ?, ?, ?)';
-
-    try {
-        $stm = $connection->prepare($insertSQL);
-        $stm->execute([$userName, $userEmail, $userTel, $userComment]);
-    } catch (PDOException $err) {
-        printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
-        exit();
-    }
-}
-
-/**
  * Очищает пользовательский ввод
  *
  * @param $value -- значение поля ввода
@@ -59,21 +36,32 @@ function cleanUserInput($value)
 }
 
 /**
- * Получает все значения поля из БД
+ * Выполняет запрос в базу данных
  *
  * @param $connection -- соединение с базой данных
- * @param $fieldName -- имя поля базы данных
- * @return mixed -- значения поля из базы данных
+ * @param $sql  -- запрос в БД
+ * @param $params -- массив параметров переменных для запроса
+ * @return mixed -- объект PDO statement
  */
-function getArrayFromDatabase($connection, $fieldName)
-{
-    $selectionSQL = "SELECT $fieldName from orders";
-
+function execute($connection, $sql, $params = []) {
     try {
-        $stm = $connection->query($selectionSQL);
-        return $stm->fetchAll(PDO::FETCH_COLUMN);
+    $stm = $connection->prepare($sql);
+    $stm->execute($params);
+    return $stm;
     } catch (PDOException $err) {
         printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
         exit();
     }
+}
+
+/**
+ * Получает из базы существующие данные для вывода на страницу
+ *
+ * @param $connection -- соединение с базой данных
+ * @return mixed - записи БД
+ */
+function getExistingData($connection) {
+    $formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
+    $stm = execute($connection, $formerOrdersSQL);
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
 }

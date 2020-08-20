@@ -1,65 +1,43 @@
-const submitBtnElement = document.querySelector('#btn');
-const nameElement = document.querySelector('#name');
-const emailElement = document.querySelector('#email');
-const telElement = document.querySelector('#tel');
-const commentElement = document.querySelector('#comment-text');
+const formElement = document.querySelector('#ajax_form');
+const nameElement = formElement.querySelector('#name');
+const emailElement = formElement.querySelector('#email');
 const responseElement = document.querySelector('#response');
 const DELAY = 1000;
 
 $('#tel').mask('9(999) 999-99-99');
 
-let validateEmail = () => {
-    const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    if (!reg.test(emailElement.value)) {
-        responseElement.classList.add('error');
-        responseElement.innerText = 'Введите корректный email !';
-        return false;
-    }
-    return true;
-}
-
-submitBtnElement.addEventListener("click", (evt) => {
+formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
     let name = nameElement.value.trim();
     let email = emailElement.value.trim();
-    let tel = telElement.value.trim();
-    let comment = commentElement.value.trim();
 
     if (!name) {
         responseElement.classList.add('error');
         responseElement.innerText = 'Заполните обязательное поле "Ваше имя" !';
-    } else if (!email) {
-        responseElement.classList.add('error');
-        responseElement.innerText = 'Заполните обязательное поле "Почта" !';
     }
 
-    if (name && email && validateEmail()) {
+    if (name && email) {
         const request = new XMLHttpRequest();
         const url = 'action_ajax_form.php';
-        const params = 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&tel=' + encodeURIComponent(tel) + '&comment=' + encodeURIComponent(comment);
+
+        let params = new FormData(formElement);
+
 
         request.open('POST', url, true);
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        request.responseType =	"json";
 
         request.addEventListener('readystatechange', () => {
 
             if (request.readyState === 4 && request.status === 200) {
-                let serverResponse = request.responseText;
+                let serverResponse = request.response;
 
-                switch (serverResponse) {
-                    case 'ok':
-                        responseElement.classList.add('success');
-                        responseElement.innerText = 'Заявка успешно отправлена!';
-                        setTimeout(() => window.location.reload(), DELAY);
-                        break;
-                    case 'email exists':
-                        responseElement.classList.add('error');
-                        responseElement.innerText = 'Пользователь с таким email уже существует !';
-                        break;
-                    case 'telephone exists':
-                        responseElement.classList.add('error');
-                        responseElement.innerText = 'Пользователь с таким телефоном уже существует !';
-                        break;
+                if (serverResponse.success === true) {
+                    responseElement.classList.add('success');
+                    responseElement.innerText = serverResponse.message;
+                    setTimeout(() => window.location.reload(), DELAY);
+                } else {
+                    responseElement.classList.add('error');
+                    responseElement.innerText = serverResponse.message;
                 }
             } else {
                 responseElement.classList.add('error');

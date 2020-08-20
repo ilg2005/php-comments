@@ -28,8 +28,8 @@
                 <input id="email" type="email" name="email" placeholder="yourmail@mail.ru" required>
             </p>
             <p>
-                <label for="comment-text">Ваш комментарий</label>
-                <textarea class="" id="comment-text" rows="10" cols="45" name="comment-text" placeholder="Введите текст комментария"></textarea>
+                <label for="comment">Ваш комментарий</label>
+                <textarea class="" id="comment" rows="10" cols="45" name="comment" placeholder="Введите текст комментария"></textarea>
             </p>
             <button id="btn" class="button send-btn" type="submit">Отправить</button>
         </form>

@@ -8,6 +8,6 @@ $linesNumber = count($content);
 
 foreach ($content as $key => $value) {
     [$name, $email, $tel, $comment] = explode("\t", $value);
-    insertData2DB($pdo, $name, $email, $tel, $comment);
+    execute($pdo, 'INSERT INTO orders (name, tel, email, comment) VALUES (?, ?, ?, ?)', [$name, $tel, $email, $comment]);
 }
 echo 'Загрузка завершена!';
