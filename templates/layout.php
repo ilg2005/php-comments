@@ -13,8 +13,8 @@
         <section class="contacts">
             <h2 class="visually-hidden">Контакты</h2>
             <div class="address">
-                <p>Телефон (499) 340-94-71</p>
-                <p>Email: <a href="mailto:info@future-group.ru">info@future-group.ru</a></p>
+                <p>Телефон (495) 292-42-52</p>
+                <p>Email: <a href="mailto:mail_user@chimmed.ru">mail_user@chimmed.ru</a></p>
             </div>
         </section>
         <div class="logo">
@@ -22,7 +22,7 @@
                 <img src="../img/logo.png" width="163" height="172" alt="Логотип компании «Future»">
             </a>
         </div>
-        <h1 class="page-title">Комментарии</h1>
+        <h1 class="page-title">Заявки</h1>
     </div>
 </header>
 <main>
@@ -41,15 +41,17 @@
             <section class="contacts">
                 <h2 class="visually-hidden">Контакты</h2>
                 <div class="address">
-                    <p>Телефон (499) 340-94-71</p>
-                    <p>Email: <a href="mailto:info@future-group.ru">info@future-group.ru</a></p>
-                    <p>Адрес: <a href="https://yandex.ru/maps/-/CCQpQBdjlB">115088, Москва, ул. 2-я Машиностроения, д. 7
-                            стр. 1</a></p>
+                    <p>Телефон (495) 292-42-52</p>
+                    <p>Email: <a href="mailto:mail_user@chimmed.ru">mail_user@chimmed.ru</a></p>
+                    <p>Адрес: <a href="https://yandex.ru/maps/-/CCQpaUQ91C">115230, Москва, Каширское шоссе, дом 3, корпус 2, строение 4/9</a></p>
                 </div>
             </section>
-            <div class="copyright">© 2010-2014 Future. Все права защищены</div>
+            <div class="copyright">© 1991-2020 Химмед. Все права защищены</div>
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="/js/ajax.js"></script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 <?php
 
-$pageTitle = 'Future - Comments';
-
 /**
  * Подключает файлы шаблонов
  *
@@ -10,7 +8,6 @@ $pageTitle = 'Future - Comments';
  *
  * @return false|string -- строка содержимого буфера вывода или false
  */
-
 function includeTemplate($name, $data)
 {
     $name = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $name;
@@ -28,18 +25,29 @@ function includeTemplate($name, $data)
 }
 
 /**
- * Вставляет данные в базу данных
+ * Очищает пользовательский ввод
+ *
+ * @param $value -- значение поля ввода
+ * @return string -- очищенное значение поля ввода
+ */
+function cleanUserInput($value)
+{
+    return trim(strip_tags($value));
+}
+
+/**
+ * Выполняет запрос в базу данных
  *
  * @param $connection -- соединение с базой данных
- * @param $userName -- имя пользователя
- * @param $userComment -- комментарий пользователя
+ * @param $sql  -- запрос в БД
+ * @param $params -- массив параметров переменных для запроса
+ * @return mixed -- объект PDO statement
  */
-function insertData2DB($connection, $userName, $userComment) {
-    $insertSQL = 'INSERT INTO comments (name, comment) VALUES (?, ?)';
-
+function execute($connection, $sql, $params = []) {
     try {
-        $stm = $connection->prepare($insertSQL);
-        $stm->execute([$userName, $userComment]);
+    $stm = $connection->prepare($sql);
+    $stm->execute($params);
+    return $stm;
     } catch (PDOException $err) {
         printf("Ошибка выполнения запроса: %s.\n", $err->getMessage());
         exit();
@@ -47,12 +55,13 @@ function insertData2DB($connection, $userName, $userComment) {
 }
 
 /**
- * Очищает пользовательский ввод
+ * Получает из базы существующие данные для вывода на страницу
  *
- * @param $value -- значение поля ввода
- * @return string -- очищенное значение поля ввода
+ * @param $connection -- соединение с базой данных
+ * @return mixed - записи БД
  */
-function checkUserInput($value) {
-    return trim(strip_tags($value));
+function getExistingData($connection) {
+    $formerOrdersSQL = "SELECT * FROM orders ORDER BY date DESC";
+    $stm = execute($connection, $formerOrdersSQL);
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
 }
-
