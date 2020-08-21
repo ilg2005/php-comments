@@ -36,6 +36,19 @@ function cleanUserInput($value)
 }
 
 /**
+ * Проверяет валидность введенного пользователем значения e-mail
+ *
+ * @param string $email -- строка с введенным пользователем значением e-mail
+ *
+ * @return mixed -- отфильтрованные данные или false, если фильтрация завершилась неудачей
+ */
+function isEmailValid($email)
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+
+/**
  * Выполняет запрос в базу данных
  *
  * @param $connection -- соединение с базой данных

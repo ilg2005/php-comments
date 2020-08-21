@@ -10,6 +10,11 @@ if (isset($_POST['name'], $_POST['email'])) {
     die();
 }
 
+if (!isEmailValid($email)) {
+    echo json_encode(['success' => false, 'message' => 'Введен невалидный email !']);
+    die();
+}
+
 if (execute($pdo, 'SELECT COUNT(*) from `orders` WHERE `email` = ?', [$email])->fetchColumn()) {
     echo json_encode(['success' => false, 'message' => 'Пользователь с таким email уже существует !']);
     die();

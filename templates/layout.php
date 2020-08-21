@@ -19,7 +19,7 @@
         </section>
         <div class="logo">
             <a>
-                <img src="../img/logo.png" width="163" height="172" alt="Логотип компании «Future»">
+                <img src="../img/logo.png" width="163" height="172" alt="Логотип компании">
             </a>
         </div>
         <h1 class="page-title">Заявки</h1>
@@ -33,7 +33,7 @@
         <div class="col-left">
             <div class="logo">
                 <a>
-                    <img src="../img/logo.png" width="82" height="86" alt="Логотип компании «Future»">
+                    <img src="../img/logo.png" width="82" height="86" alt="Логотип компании">
                 </a>
             </div>
         </div>
