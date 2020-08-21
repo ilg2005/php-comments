@@ -59,7 +59,7 @@ input[type="radio"].visually-hidden {
     align-content:stretch;
     width: 1160px;
     margin: 0 auto;
-    padding: 0 150px 0 100px;
+    padding: 0 150px 100px 100px;
 }
 
 /* ------Styling of .page-header------*/
