@@ -2,11 +2,18 @@
 require_once 'functions.php';
 require_once 'connect.php';
 
-if (isset($_POST['name'], $_POST['email'])) {
+session_start();
+if (isset($_POST['name'], $_POST['email'], $_POST['norobot'])) {
     $name = cleanUserInput($_POST['name']);
     $email = cleanUserInput($_POST['email']);
+    $captcha = cleanUserInput($_POST['norobot']);
 } else {
     echo json_encode(['success' => false, 'message' => 'Не заполнены обязательные поля !']);
+    die();
+}
+
+if (md5($_POST['norobot']) !== $_SESSION['randomnr2'])	{
+    echo json_encode(['success' => false, 'message' => 'Поле "Введите число" заполнено неверно !']);
     die();
 }
 

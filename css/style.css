@@ -204,6 +204,16 @@ main {
     opacity: 1;
 }
 
+.comments-form .captcha {
+    width: 150px;
+    height: 50px;
+}
+
+.comments-form div {
+    display: flex;
+    height: 50px;
+}
+
 .error {
     display: block;
     font-weight: 200;
@@ -221,7 +231,7 @@ main {
 .send-btn {
     display: block;
     min-height: 50px;
-    padding: 16px 0;
+    padding: 0;
 
     font-weight: 500;
     line-height: 18px;
@@ -230,7 +240,7 @@ main {
 
     border-radius: 3px;
     width: 130px;
-    margin-left: 330px;
+    margin-left: 80px;
     margin-bottom: 55px;
 
     background-color: #eeeeee;

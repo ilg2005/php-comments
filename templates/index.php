@@ -3,11 +3,13 @@
     <section class="comments"> <!--Переименовать классы-->
         <ul class="comments-list">
             <?php foreach ($results as $key => $value) : ?>
-            <li>
-                <div><span class="customer-name"><?= $value['name'] ?></span><span class="time"><?= date('H:i', strtotime($value['date'])) ?>  </span><span class="date"><?= date('d.m.Y', strtotime($value['date'])) ?></span>
-                </div>
-                <div class="customer-text"><?= $value['comment'] ?></div>
-            </li>
+                <li>
+                    <div><span class="customer-name"><?= $value['name'] ?></span><span class="time"><?= date('H:i',
+                                strtotime($value['date'])) ?>  </span><span class="date"><?= date('d.m.Y',
+                                strtotime($value['date'])) ?></span>
+                    </div>
+                    <div class="customer-text"><?= $value['comment'] ?></div>
+                </li>
             <?php endforeach; ?>
         </ul>
     </section>
@@ -29,9 +31,16 @@
             </p>
             <p>
                 <label for="comment">Ваш комментарий</label>
-                <textarea class="" id="comment" rows="10" cols="45" name="comment" placeholder="Введите текст комментария"></textarea>
+                <textarea class="" id="comment" rows="10" cols="45" name="comment"
+                          placeholder="Введите текст комментария"></textarea>
             </p>
-            <button id="btn" class="button send-btn" type="submit">Отправить</button>
+            <p>
+                <label class="required" for="captcha">Введите число</label>
+            <div><img src="captcha.php" alt="Captcha image">
+                <input id="captcha" class="captcha" type="text" name="norobot" required>
+                <button id="btn" class="button send-btn" type="submit">Отправить</button>
+            </div>
+            </p>
         </form>
 
     </section>
