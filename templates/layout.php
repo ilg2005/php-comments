@@ -29,7 +29,7 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">Оставить заявку</a>
+                    <a class="nav-link active" href="#home">Заявки</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Контакты</a>
