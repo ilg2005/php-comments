@@ -13,89 +13,73 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-<!-- NAVBAR -->
-<nav id="main-nav" class="navbar navbar-expand-md navbar-dark bg-dark py-4">
-    <div class="container">
-        <div class="row">
-            <a class="navbar-brand" href="#home">
-                <img src="../img/logo.png" width="50" height="50" alt="Company's Logo">
-                <h3 class="d-inline align-middle">M-Company</h3></a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#home">Заявки</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Контакты</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-<div class="container">
-    <header class="page-header">
-        <div class="row d-flex align-items-center justify-content-between">
-            <section class="contacts col">
-            <h2 class="invisible">Контакты</h2>
-            <div class="card card-body border-0 address">
-                <a class="text-dark d-block mb-4" href="tel:+77777777777"><i class="fas fa-phone fa-2x "></i> +7 (777) 777-77-77</a>
-                <a class="text-dark d-block mb-4" href="email:m-company@gmail.com"><i class="fas fa-envelope fa-2x"></i>  m-company@gmail.com</a>
+<header id="page-header" class="bg-dark text-white">
+    <!-- NAVBAR -->
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <a class="navbar-brand" href="#home">
+                    <img src="../img/logo.png" width="150" height="150" alt="Company's Logo">
+                    <h3 class="d-inline offset-1 align-middle">M-Company</h3></a>
             </div>
-            </section>
-            <div class="logo col">
-            <a href="#">
-                <img src="../img/logo.png" width="163" height="172" alt="Логотип компании" class="img-fluid">
-            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link mr-4 active" href="#home">Заявки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mr-4" href="#contact">Контакты</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        </div>
-        <div class="row">
-            <h1 class="page-title">Заявки</h1>
-    </div>
+    </nav>
 </header>
-</div>
-<!--<main>
-    <?/*= $mainContent */?>
+
+<main>
+    <?= $mainContent ?>
 </main>
-<footer class="page-footer">
+
+<footer id="page-footer" class="bg-dark text-white py-5">
     <div class="container">
-        <div class="col-left">
-            <div class="logo">
-                <a>
-                    <img src="../img/logo.png" width="82" height="86" alt="Логотип компании">
+        <div class="row d-flex">
+            <div id="contacts" class="contacts text-white col-6">
+                <div class="h2 ml-3">Контакты:</div>
+                <div class="card card-body border-0 bg-dark address">
+                    <a class="d-block text-white mb-4" href="tel:+77777777777"><i class="fas fa-phone fa-2x mr-2"></i>
+                        +7 (777) 777-77-77</a>
+                    <a class="d-block  text-white mb-4" href="email:m-company@gmail.com"><i
+                                class="fas fa-envelope fa-2x mr-2"></i> m-company@gmail.com</a>
+                </div>
+            </div>
+            <div class="logo align-content-end offset-3">
+                <a href="#">
+                    <img src="../img/logo.png" width="150" height="150" alt="Логотип компании" class="img-fluid">
                 </a>
             </div>
         </div>
-        <div class="col-right">
-            <section class="contacts">
-                <h2 class="visually-hidden">Контакты</h2>
-                <div class="address">
-                    <p>Телефон (495) 292-42-52</p>
-                    <p>Email: <a href="mailto:mail_user@chimmed.ru">mail_user@chimmed.ru</a></p>
-                    <p>Адрес: <a href="https://yandex.ru/maps/-/CCQpaUQ91C">115230, Москва, Каширское шоссе, дом 3, корпус 2, строение 4/9</a></p>
-                </div>
-            </section>
-            <div class="copyright">© 1991-2020 Химмед. Все права защищены</div>
+
+        <div class="row">
+            <p class="lead mx-auto">Copyright © <span id="year">2020</span></p>
         </div>
     </div>
-</footer>-->
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js"
+        type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-<script src="/js/ajax.js"></script>
+<script src="../js/ajax.js"></script>
 </body>
 </html>
