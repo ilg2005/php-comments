@@ -57,7 +57,7 @@
                                 class="fas fa-envelope fa-2x mr-2"></i> m-company@gmail.com</a>
                 </div>
             </div>
-            <div class="logo align-content-end offset-3">
+            <div class="logo align-content-end offset-3 d-none d-lg-block">
                 <a href="#">
                     <img src="../img/logo.png" width="150" height="150" alt="Логотип компании" class="img-fluid">
                 </a>
