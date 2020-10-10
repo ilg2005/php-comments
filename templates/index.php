@@ -19,7 +19,7 @@
             <section class="response-form col-lg-6 order-lg-2 order-md-1 mb-5">
                 <h3>Оставить заявку</h3>
                 <p id="response" class=""></p>
-                <form id="ajax_form" action="" method="post">
+                <form id="ajax_form" action="" method="post" novalidate>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -27,6 +27,9 @@
                             </span>
                         </div>
                         <input  id="name" type="text" name="name" class="form-control" placeholder="Ваше имя" required>
+                        <div class="invalid-feedback">
+                            Заполните обязательное поле "Ваше имя" !
+                        </div>
                     </div>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
@@ -43,7 +46,11 @@
                             </span>
                         </div>
                         <input id="email" type="email" name="email" class="form-control" placeholder="Ваш Email" required>
+                        <div class="invalid-feedback">
+                            Заполните обязательное поле "Ваш Email" !
+                        </div>
                     </div>
+
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -59,6 +66,10 @@
                             </span>
                         </div>
                         <input id="captcha" class="form-control" type="text" name="norobot" placeholder="Введите число" required>
+                        <div class="invalid-feedback">
+                            Заполните обязательное поле "Введите число" !
+                        </div>
+
                     </div>
 
                     <input id="btn" type="submit" value="Отправить" class="btn btn-block btn-secondary btn-lg">

@@ -47,3 +47,25 @@
 }
 
 /*------- Styling of the section "Response-form" ----*/
+.invalid-feedback {
+    font-size: 18px;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #ced4da;
+    background-image: none;
+}
+
+.error {
+    display: block;
+    font-weight: 200;
+    font-size: 14px;
+    color: #f60505;
+}
+
+.success {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1ebd2c;
+}

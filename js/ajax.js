@@ -13,7 +13,12 @@ formElement.addEventListener("submit", (evt) => {
     let email = emailElement.value.trim();
     let captcha = captchaElement.value.trim();
 
-    if (!name) {
+    if (formElement.checkValidity() === false) {
+        evt.stopPropagation();
+    }
+    formElement.classList.add('was-validated');
+
+    /*if (!name) {
         responseElement.classList.add('error');
         responseElement.innerText = 'Заполните обязательное поле "Ваше имя" !';
     }
@@ -21,7 +26,7 @@ formElement.addEventListener("submit", (evt) => {
     if (!captcha) {
         responseElement.classList.add('error');
         responseElement.innerText = 'Заполните обязательное поле "Введите число" !';
-    }
+    }*/
 
     if (name && email && captcha) {
         const request = new XMLHttpRequest();
