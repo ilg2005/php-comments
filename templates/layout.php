@@ -33,7 +33,7 @@
                         <a class="nav-link mr-4 active" href="#orders">Заявки</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mr-4" href="#contact">Контакты</a>
+                        <a class="nav-link mr-4" href="#page-footer">Контакты</a>
                     </li>
                 </ul>
             </div>

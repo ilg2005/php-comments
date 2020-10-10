@@ -10,3 +10,38 @@
 .orders {
     padding-top: 250px;
 }
+
+#page-footer {
+    margin-top: 250px;
+}
+
+/* ------ Styling of the section "Responses" ------*/
+.responses-list {
+    display: block;
+    margin-top: 20px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.responses-list li {
+    margin-bottom: 20px;
+}
+
+.customer-name {
+    padding-right: 40px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.date, .time {
+    padding-right: 5px;
+    font-weight: 400;
+    font-size: 18px;
+
+}
+
+.customer-text {
+    font-size: 18px;
+}
