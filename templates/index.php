@@ -16,37 +16,54 @@
                     <?php endforeach; ?>
                 </ul>
             </section>
-            <sectiom class="response-form col-lg-6 order-lg-2 order-md-1 mb-5">
-                <h2>Оставить заявку</h2>
-                <div id="response" class=""></div>
+            <section class="response-form col-lg-6 order-lg-2 order-md-1 mb-5">
+                <h3>Оставить заявку</h3>
+                <p id="response" class=""></p>
                 <form id="ajax_form" action="" method="post">
-                    <p>
-                        <label class="required" for="name">Ваше имя</label>
-                        <input id="name" type="text" name="name" placeholder="Герасим" required>
-                    </p>
-                    <p>
-                        <label for="tel">Телефон</label>
-                        <input id="tel" type="tel" name="tel" placeholder="9(999)999-99-99">
-                    </p>
-                    <p>
-                        <label class="required" for="email">Почта</label>
-                        <input id="email" type="email" name="email" placeholder="yourmail@mail.ru" required>
-                    </p>
-                    <p>
-                        <label for="comment">Ваш комментарий</label>
-                        <textarea class="" id="comment" rows="10" cols="45" name="comment"
-                                  placeholder="Введите текст комментария"></textarea>
-                    </p>
-                    <p>
-                        <label class="required" for="captcha">Введите число</label>
-                    <div><img src="captcha.php" alt="Captcha image">
-                        <input id="captcha" class="captcha" type="text" name="norobot" required>
-                        <button id="btn" class="button send-btn" type="submit">Отправить</button>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <input  id="name" type="text" name="name" class="form-control" placeholder="Ваше имя" required>
                     </div>
-                    </p>
-                </form>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <input id="tel" type="tel" name="tel" class="form-control" placeholder="Телефон">
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input id="email" type="email" name="email" class="form-control" placeholder="Ваш Email" required>
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </div>
+                        <textarea id="comment" name="comment" rows="5"  class="form-control" placeholder="Ваше сообщение"></textarea>
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text p-0 m-0">
+                                <img src="captcha.php" class="img-fluid" alt="Captcha image">
+                            </span>
+                        </div>
+                        <input id="captcha" class="form-control" type="text" name="norobot" placeholder="Введите число" required>
+                    </div>
 
-            </sectiom>
+                    <input id="btn" type="submit" value="Отправить" class="btn btn-block btn-secondary btn-lg">
+                </form>
+            </section>
         </div>
     </div>
 </section>
