@@ -1,3 +1,12 @@
+.navbar {
+    box-shadow: 2px 2px 5px #3292a6;
+    opacity: 0.9;
+}
+
 .nav-link {
     font-size: 24px;
+}
+
+.orders {
+    padding-top: 250px;
 }

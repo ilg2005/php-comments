@@ -15,10 +15,10 @@
 <body>
 <header id="page-header" class="bg-dark text-white">
     <!-- NAVBAR -->
-    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-4">
         <div class="container">
             <div class="row">
-                <a class="navbar-brand" href="#home">
+                <a class="navbar-brand" href="#">
                     <img src="../img/logo.png" width="150" height="150" alt="Company's Logo">
                     <h3 class="d-inline offset-1 align-middle">M-Company</h3></a>
             </div>
@@ -30,7 +30,7 @@
             <div id="navbarCollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link mr-4 active" href="#home">Заявки</a>
+                        <a class="nav-link mr-4 active" href="#orders">Заявки</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mr-4" href="#contact">Контакты</a>
@@ -48,7 +48,7 @@
 <footer id="page-footer" class="bg-dark text-white py-5">
     <div class="container">
         <div class="row d-flex">
-            <div id="contacts" class="contacts text-white col-6">
+            <div id="contact" class="contacts text-white col-6">
                 <div class="h2 ml-3">Контакты:</div>
                 <div class="card card-body border-0 bg-dark address">
                     <a class="d-block text-white mb-4" href="tel:+77777777777"><i class="fas fa-phone fa-2x mr-2"></i>
@@ -81,5 +81,6 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 <script src="../js/ajax.js"></script>
+<script src="../js/main.js"></script>
 </body>
 </html>

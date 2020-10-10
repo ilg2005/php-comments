@@ -2,7 +2,7 @@
 require_once 'functions.php';
 require_once 'connect.php';
 
-$pageTitle = 'Chimmed - Orders';
+$pageTitle = 'M-Company - Orders';
 
 $results = getExistingData($pdo);
 
