@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="text-center mb-5">Заявки</h1>
         <div class="row">
-            <section class="responses col-lg-6 order-lg-1 order-md-2">
+            <section class="responses col-lg-6 order-lg-1 order-md-2 <?= count($results) ?: "d-none" ?>">
                 <ul class="responses-list">
                     <?php foreach ($results as $key => $value) : ?>
                         <li>
@@ -16,7 +16,7 @@
                     <?php endforeach; ?>
                 </ul>
             </section>
-            <section class="response-form col-lg-6 order-lg-2 order-md-1 mb-5">
+            <section class="response-form col-lg-6 order-lg-2 order-md-1 mb-5 <?= count($results) ?: " offset-lg-3 justify-content-center" ?>">
                 <h3>Оставить заявку</h3>
                 <br>
                 <form id="ajax_form" action="" method="post" novalidate>

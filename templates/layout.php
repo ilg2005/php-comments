@@ -15,7 +15,7 @@
 <body>
 <header id="page-header" class="bg-dark text-white">
     <!-- NAVBAR -->
-    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-4">
+    <nav id="main-nav" class="navbar navbar-expand-lg navbar-dark bg-dark py-4 mb-5">
         <div class="container">
             <div class="row">
                 <a class="navbar-brand" href="#">
@@ -45,7 +45,7 @@
     <?= $mainContent ?>
 </main>
 
-<footer id="page-footer" class="bg-dark text-white py-5">
+<footer id="page-footer" class="bg-dark text-white py-5 mt-5">
     <div class="container">
         <div class="row d-flex">
             <div id="contact" class="contacts text-white col-6">
@@ -57,7 +57,7 @@
                                 class="fas fa-envelope fa-2x mr-2"></i> m-company@gmail.com</a>
                 </div>
             </div>
-            <div class="logo align-content-end offset-3 d-none d-lg-block">
+            <div class="logo align-content-end offset-3">
                 <a href="#">
                     <img src="../img/logo.png" width="150" height="150" alt="Логотип компании" class="img-fluid">
                 </a>
