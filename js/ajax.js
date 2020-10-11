@@ -18,16 +18,6 @@ formElement.addEventListener("submit", (evt) => {
     }
     formElement.classList.add('was-validated');
 
-    /*if (!name) {
-        responseElement.classList.add('error');
-        responseElement.innerText = 'Заполните обязательное поле "Ваше имя" !';
-    }
-
-    if (!captcha) {
-        responseElement.classList.add('error');
-        responseElement.innerText = 'Заполните обязательное поле "Введите число" !';
-    }*/
-
     if (name && email && captcha) {
         const request = new XMLHttpRequest();
         const url = 'action_ajax_form.php';
@@ -43,15 +33,21 @@ formElement.addEventListener("submit", (evt) => {
                 let serverResponse = request.response;
 
                 if (serverResponse.success === true) {
-                    $('#ajax_form').hide();
-                    responseElement.classList.add('success');
-                    responseElement.innerText = 'Спасибо, ' + name + ' ! ' + serverResponse.message;
+                    $('form :submit').attr('disabled', 'disabled');
+                    $(responseElement).removeClass('d-none error').addClass('success').text('Спасибо, ' + name + ' ! ' + serverResponse.message);
                     setTimeout(() => window.location.reload(), DELAY);
                 } else {
-                    responseElement.classList.add('error');
-                    responseElement.innerText = serverResponse.message;
+                    formElement.classList.remove('was-validated');
+                    $('.is-invalid').removeClass('is-invalid');
+                    let errorField = formElement.querySelector('#' + serverResponse.field);
+                    $(errorField).addClass('is-invalid');
+                    $('.is-invalid + .invalid-feedback').text(serverResponse.message);
+
+                    $(responseElement).removeClass('d-none success').addClass('error').text('Форма не отправлена: исправьте ошибки!');
                 }
+
             } else {
+                responseElement.classList.remove('d-none');
                 responseElement.classList.add('error');
                 responseElement.innerText = 'Что-то пошло не так... Повторите загрузку позже.';
             }

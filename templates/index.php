@@ -18,7 +18,7 @@
             </section>
             <section class="response-form col-lg-6 order-lg-2 order-md-1 mb-5">
                 <h3>Оставить заявку</h3>
-                <p id="response" class=""></p>
+                <br>
                 <form id="ajax_form" action="" method="post" novalidate>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
@@ -26,7 +26,7 @@
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                        <input  id="name" type="text" name="name" class="form-control" placeholder="Ваше имя" required>
+                        <input  id="name" type="text" name="name" class="form-control fix-rounded-right" placeholder="Ваше имя" required>
                         <div class="invalid-feedback">
                             Заполните обязательное поле "Ваше имя" !
                         </div>
@@ -37,7 +37,10 @@
                                 <i class="fas fa-phone"></i>
                             </span>
                         </div>
-                        <input id="tel" type="tel" name="tel" class="form-control" placeholder="Телефон">
+                        <input id="tel" type="tel" name="tel" class="form-control fix-rounded-right" placeholder="Телефон">
+                        <div class="invalid-feedback">
+                            Пользователь с таким телефоном уже существует !
+                        </div>
                     </div>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
@@ -45,7 +48,7 @@
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
-                        <input id="email" type="email" name="email" class="form-control" placeholder="Ваш Email" required>
+                        <input id="email" type="email" name="email" class="form-control fix-rounded-right" placeholder="Ваш Email" required>
                         <div class="invalid-feedback">
                             Заполните обязательное поле "Ваш Email" !
                         </div>
@@ -57,7 +60,7 @@
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
                         </div>
-                        <textarea id="comment" name="comment" rows="5"  class="form-control" placeholder="Ваше сообщение"></textarea>
+                        <textarea id="comment" name="comment" rows="5"  class="form-control fix-rounded-right" placeholder="Ваше сообщение"></textarea>
                     </div>
                     <div class="input-group input-group-lg mb-3">
                         <div class="input-group-prepend">
@@ -65,7 +68,7 @@
                                 <img src="captcha.php" class="img-fluid" alt="Captcha image">
                             </span>
                         </div>
-                        <input id="captcha" class="form-control" type="text" name="norobot" placeholder="Введите число" required>
+                        <input id="captcha" class="form-control fix-rounded-right" type="text" name="norobot" placeholder="Введите число" required>
                         <div class="invalid-feedback">
                             Заполните обязательное поле "Введите число" !
                         </div>
@@ -74,6 +77,7 @@
 
                     <input id="btn" type="submit" value="Отправить" class="btn btn-block btn-secondary btn-lg">
                 </form>
+                <p id="response" class="alert text-center d-none" role="alert">Результат отправки формы</p>
             </section>
         </div>
     </div>

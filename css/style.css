@@ -56,16 +56,21 @@
     background-image: none;
 }
 
-.error {
+.fix-rounded-right {
+    border-top-right-radius: .2rem !important;
+    border-bottom-right-radius: .2rem !important;
+}
+
+.alert {
     display: block;
-    font-weight: 200;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.alert.error {
     color: #f60505;
 }
 
-.success {
-    display: block;
-    font-weight: 400;
-    font-size: 16px;
+.alert.success {
     color: #1ebd2c;
 }
